@@ -1,31 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous"
+    />
+    <script src="https://kit.fontawesome.com/855e3f5928.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="css/style.css">
+    <title>Home</title>
+    
 </head>
 <body>
-    <h1>Todos</h1>
-    <ul>
-    <% todos.forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class='del'> Delete </span>
-            </li>
-    <% }) %>    
-    </ul>
+    
+    <div class="mainDiv card">
+        <a href="/logout">
+            <button class="btn btn-danger">Logout</button> 
+        </a>
+        <h1>Todos</h1>
+        
+        <form action="/todos/createTodo" method='POST' class="form">
+            <input type="text" placeholder="Enter Todo Item" name='todoItem' class="form-control">
+            <input type="submit" class="btn btn-primary" value="Add">
+        </form>
+        <h4><%= user.userName %> has <%= left %> things left to do.</h4>
+        <ol class="ul">
+            <% todos.forEach( (el, i) => { %>
+                    <li class='todoItem' data-id='<%=el._id%>'>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= i + 1 + ". " + el.todo %></span>
+                        
+                        <i class='del fa-solid fa-trash'></i>
+                    </li>
+            <% }) %>    
+        </ol>
+    </div>
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
-
-    <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
-        <input type="submit">
-    </form>
-
-    <a href="/logout">Logout</a>
+    
+    
 
     <script src="js/main.js"></script>
 </body>

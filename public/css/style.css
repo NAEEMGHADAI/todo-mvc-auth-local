@@ -1,3 +1,6 @@
+* {
+	font-family: "Inter", sans-serif;
+}
 h1 {
 	color: red;
 }
@@ -5,6 +8,49 @@ h1 {
 	text-decoration: line-through;
 	color: gray;
 }
-.not {
-	text-decoration: underline;
+
+h4 {
+	margin: 20px 0;
+}
+
+.btn-danger {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.form {
+	display: flex;
+	width: 400px;
+}
+.form > * {
+	margin-left: 20px;
+}
+
+.mainDiv {
+	margin: 25px 25%;
+	padding: 80px 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+ol {
+	padding: 0;
+	width: 100%;
+	padding: 0 40px;
+}
+ol > li {
+	margin-right: 0;
+	display: flex;
+	justify-content: space-between;
+	list-style-type: armenian;
+	font-size: 20px;
+}
+
+@media only screen and (max-width: 750px) {
+	.mainDiv {
+		margin: 100px 10%;
+	}
 }
